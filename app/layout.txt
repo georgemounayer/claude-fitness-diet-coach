@@ -1,0 +1,159 @@
+import './globals.css'
+import { Inter, Lexend } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const lexend = Lexend({ 
+  subsets: ['latin'],
+  variable: '--font-lexend',
+})
+
+export const metadata = {
+  title: 'FitnessAI - Din personliga tränings- och kostcoach',
+  description: 'AI-driven tränings- och kostapp anpassad för svenska användare. Personaliserade träningspass, kostscheman och framstegsspårning.',
+  keywords: 'träning, kost, fitness, AI, personlig tränare, kostschema, viktnedgång, muskeluppbyggnad',
+  authors: [{ name: 'FitnessAI Team' }],
+  creator: 'FitnessAI',
+  publisher: 'FitnessAI',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    locale: 'sv_SE',
+    url: 'https://fitness-ai.se',
+    title: 'FitnessAI - Din personliga tränings- och kostcoach',
+    description: 'AI-driven tränings- och kostapp anpassad för svenska användare.',
+    siteName: 'FitnessAI',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FitnessAI - Din personliga tränings- och kostcoach',
+    description: 'AI-driven tränings- och kostapp anpassad för svenska användare.',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: '#0ea5e9',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="sv" className={`${inter.variable} ${lexend.variable}`}>
+      <head>
+        {/* PWA Meta Tags */}
+        <meta name="application-name" content="FitnessAI" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="FitnessAI" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="msapplication-TileColor" content="#0ea5e9" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          as="style"
+        />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+          as="style"
+        />
+      </head>
+      <body className="font-sans antialiased bg-gray-50 text-gray-900">
+        {/* Skip to main content for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary-600 text-white px-4 py-2 rounded-lg"
+        >
+          Hoppa till huvudinnehåll
+        </a>
+
+        {/* Main app container */}
+        <div id="__next" className="min-h-screen">
+          <main id="main-content" className="relative">
+            {children}
+          </main>
+        </div>
+
+        {/* Toast notifications */}
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#1f2937',
+              color: '#f9fafb',
+              borderRadius: '0.75rem',
+              padding: '1rem',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+            },
+            success: {
+              iconTheme: {
+                primary: '#22c55e',
+                secondary: '#ffffff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#ffffff',
+              },
+            },
+          }}
+        />
+
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
+
+        {/* Analytics placeholder (Google Analytics, etc.) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Analytics initialization will go here
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              // gtag('config', 'GA_MEASUREMENT_ID');
+            `,
+          }}
+        />
+      </body>
+    </html>
+  )
+}
