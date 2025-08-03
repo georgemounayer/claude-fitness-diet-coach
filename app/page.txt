@@ -1,0 +1,267 @@
+import Link from 'next/link'
+import { ArrowRight, Smartphone, Brain, TrendingUp, Users, Star, CheckCircle } from 'lucide-react'
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Navigation */}
+      <nav className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <h1 className="text-2xl font-bold text-gradient">FitnessAI</h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Link
+                href="/login"
+                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+              >
+                Logga in
+              </Link>
+              <Link
+                href="/register"
+                className="btn-primary"
+              >
+                Kom igång
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
+              Din personliga
+              <span className="text-gradient block">AI-träningscoach</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Få skräddarsydda träningspass och kostscheman baserade på dina mål. 
+              AI-driven coaching som anpassar sig efter din livsstil.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/register"
+                className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center"
+              >
+                Starta 3 dagars gratis test
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <button className="btn-outline text-lg px-8 py-4">
+                Se hur det fungerar
+              </button>
+            </div>
+            <p className="text-sm text-gray-500 mt-4">
+              Ingen bindningstid • Avsluta när du vill • Svensk support
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Varför välja FitnessAI?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Avancerad AI-teknik möter svensk kvalitet för att ge dig den bästa tränings- och kostupplevelsen.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Brain className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">AI-Personalisering</h3>
+              <p className="text-gray-600">
+                Träningspass och måltider anpassade efter dina mål, preferenser och begränsningar.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-secondary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="h-8 w-8 text-secondary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mobilvänlig</h3>
+              <p className="text-gray-600">
+                Perfekt optimerad för mobilen. Träna var du vill, när du vill.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-success-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-8 w-8 text-success-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Spåra framsteg</h3>
+              <p className="text-gray-600">
+                Se din utveckling med detaljerad statistik och motiverande grafer.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-warning-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-warning-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Svensk kvalitet</h3>
+              <p className="text-gray-600">
+                Utvecklad för svenska användare med lokalt innehåll och support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Vad säger våra användare?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-warning-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Äntligen en app som förstår mina behov! AI:n har hjälpt mig gå ner 8 kg på 3 månader."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary-600 font-semibold">A</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-semibold text-gray-900">Anna L.</p>
+                  <p className="text-sm text-gray-500">Stockholm</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-warning-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Bästa träningsappen jag använt. Passen är utmanande men realistiska för min nivå."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center">
+                  <span className="text-secondary-600 font-semibold">M</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-semibold text-gray-900">Magnus K.</p>
+                  <p className="text-sm text-gray-500">Göteborg</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-warning-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Kostscheman som faktiskt funkar i vardagen. Enkelt att följa och supergott!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-success-100 rounded-full flex items-center justify-center">
+                  <span className="text-success-600 font-semibold">S</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-semibold text-gray-900">Sara M.</p>
+                  <p className="text-sm text-gray-500">Malmö</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-primary-600">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Redo att börja din resa?
+          </h2>
+          <p className="text-xl text-primary-100 mb-8">
+            Gå med tusentals andra som redan förvandlat sina liv med FitnessAI
+          </p>
+          <Link
+            href="/register"
+            className="bg-white text-primary-600 font-semibold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center"
+          >
+            Starta din kostnadsfria provperiod
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-primary-100">
+            <div className="flex items-center justify-center">
+              <CheckCircle className="h-5 w-5 mr-2" />
+              3 dagars gratis test
+            </div>
+            <div className="flex items-center justify-center">
+              <CheckCircle className="h-5 w-5 mr-2" />
+              Ingen bindningstid
+            </div>
+            <div className="flex items-center justify-center">
+              <CheckCircle className="h-5 w-5 mr-2" />
+              Avsluta när som helst
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">FitnessAI</h3>
+              <p className="text-gray-400">
+                Din personliga AI-träningscoach för en hälsosammare livsstil.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Produkten</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/features" className="hover:text-white transition-colors">Funktioner</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Priser</Link></li>
+                <li><Link href="/download" className="hover:text-white transition-colors">Ladda ner</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/help" className="hover:text-white transition-colors">Hjälpcenter</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Kontakt</Link></li>
+                <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Juridiskt</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/legal/privacy" className="hover:text-white transition-colors">Integritetspolicy</Link></li>
+                <li><Link href="/legal/terms" className="hover:text-white transition-colors">Användarvillkor</Link></li>
+                <li><Link href="/legal/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 FitnessAI. Alla rättigheter förbehållna.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
