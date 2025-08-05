@@ -55,7 +55,7 @@ export default function OnboardingPage() {
 
   const canProceed = () => {
     switch (currentStep) {
-      case 1: return data.language !== ''
+      case 1: return true // Språk har alltid ett defaultvärde
       case 2: return data.gender !== '' && data.age !== ''
       case 3: return data.weight !== '' && data.height !== ''
       case 4: return data.country !== '' && data.address !== ''
