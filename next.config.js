@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-// Remove this line or the entire experimental section if it's the only property
-//    experimental: {
-//    serverActions: true,
-//  },
   
   images: {
     remotePatterns: [
