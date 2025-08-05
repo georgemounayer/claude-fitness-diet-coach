@@ -14,10 +14,16 @@ export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
   indeterminate?: boolean;
 }
 
-export interface CircularProgressProps extends Omit<ProgressBarProps, 'size' | 'striped'> {
+export interface CircularProgressProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'size' | 'striped'> {
+  value: number;
+  max?: number;
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'info';
   size?: number;
   strokeWidth?: number;
   showValue?: boolean;
+  showPercentage?: boolean;
+  label?: string;
+  indeterminate?: boolean;
   children?: React.ReactNode;
 }
 
@@ -126,7 +132,7 @@ export const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
 
 ProgressBar.displayName = 'ProgressBar';
 
-export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgressProps>(
+export const CircularProgress = React.forwardRef<HTMLDivElement, CircularProgressProps>(
   ({
     className,
     value,
@@ -164,16 +170,14 @@ export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgress
     }[variant];
 
     return (
-      <div className={cn('relative inline-flex items-center justify-center', className)}>
+      <div ref={ref} className={cn('relative inline-flex items-center justify-center', className)} {...props}>
         <svg
-          ref={ref}
           width={size}
           height={size}
           className={cn(
             'transform -rotate-90',
             indeterminate && 'animate-spin'
           )}
-          {...props}
         >
           {/* Background circle */}
           <circle
